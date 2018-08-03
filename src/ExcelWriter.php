@@ -34,7 +34,7 @@ class ExcelWriter implements Writer
     protected $prependHeaderRow;
 
     /**
-     * @var PHPExcel
+     * @var Spreadsheet
      */
     protected $excel;
 
@@ -49,7 +49,7 @@ class ExcelWriter implements Writer
      * @param string         $type  Excel file type (defaults to Excel2007)
      * @param boolean        $prependHeaderRow
      */
-    public function __construct(\SplFileObject $file, $sheet = null, $type = 'Excel2007', $prependHeaderRow = false)
+    public function __construct(\SplFileObject $file, $sheet = null, $type = 'Xlsx', $prependHeaderRow = false)
     {
         $this->filename = $file->getPathname();
         $this->sheet = $sheet;
@@ -62,11 +62,11 @@ class ExcelWriter implements Writer
      */
     public function prepare()
     {
-        $reader = PHPExcel_IOFactory::createReader($this->type);
+        $reader = IOFactory::createReader($this->type);
         if ($reader->canRead($this->filename)) {
             $this->excel = $reader->load($this->filename);
         } else {
-            $this->excel = new PHPExcel();
+            $this->excel = new Spreadsheet();
         }
 
         if (null !== $this->sheet) {

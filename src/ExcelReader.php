@@ -52,7 +52,7 @@ class ExcelReader implements CountableReader, \SeekableIterator
      */
     public function __construct(\SplFileObject $file, $headerRowNumber = null, $activeSheet = null, $readOnly = true, $maxRows = null)
     {
-        $reader = \PHPExcel_IOFactory::createReaderForFile($file->getPathName());
+        $reader = IOFactory::createReaderForFile($file->getPathName());
         $reader->setReadDataOnly($readOnly);
         /** @var \PHPExcel $excel */
         $excel = $reader->load($file->getPathname());
