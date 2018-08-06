@@ -2,6 +2,7 @@
 
 namespace Port\Excel;
 
+use PhpOffice\PhpSpreadsheet\IOFactory;
 use Port\Reader\CountableReader;
 
 /**

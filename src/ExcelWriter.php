@@ -2,9 +2,10 @@
 
 namespace Port\Excel;
 
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Port\Writer;
-use PHPExcel;
-use PHPExcel_IOFactory;
+
 
 /**
  * Writes to an Excel file
@@ -107,7 +108,7 @@ class ExcelWriter implements Writer
      */
     public function finish()
     {
-        $writer = \PHPExcel_IOFactory::createWriter($this->excel, $this->type);
+        $writer = IOFactory::createWriter($this->excel, $this->type);
         $writer->save($this->filename);
     }
 }
